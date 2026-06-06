@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingreso Personal - Vet Murphy</title>
+    <link rel="stylesheet" th:href="@{/estilos.css}">
+</head>
+<body>
+
+    <main class="contenedor-centrado">
+        
+        <div class="tarjeta form-login">
+            <h2 class="titulo-login">Acceso Personal</h2>
+            <p class="subtitulo-login">Introduce tus credenciales de staff</p>
+
+            <div th:if="${error}" class="alerta-error">
+                <p th:text="${error}"></p>
+            </div>
+
+            <form th:action="@{/autenticar-vet}" method="POST">
+                
+                <div class="grupo-input">
+                    <label>Correo:</label>
+                    <input type="email" name="correo" required placeholder="ejemplo@vetmurphy.com">
+                </div>
+
+                <div class="grupo-input">
+                    <label>Contraseña:</label>
+                    <input type="password" name="password" required placeholder="••••••••">
+                </div>
+
+                <div class="grupo-input input-seguridad">
+                    <label>Código de Autorización Único:</label>
+                    <input type="text" name="codigoAcceso" required placeholder="••••••••">
+                </div>
+
+                <button type="submit" class="boton-principal ancho-total">Ingresar al Sistema</button>
+            </form>
+            
+            <div class="enlace-volver">
+                <a th:href="@{/}">← Volver al Inicio</a>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+</html>

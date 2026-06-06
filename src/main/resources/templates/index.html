@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vet Murphy - Atención Integral</title>
+    
+    <link rel="stylesheet" th:href="@{/estilos.css}">
+</head>
+<body>
+
+    <header class="encabezado-principal">
+        <div class="logo">Vet Murphy</div>
+        <nav class="menu-navegacion">
+            <ul>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#contacto">Contacto y Ubicación</a></li>
+                <a th:href="@{/login-vet}" class="btn-acceso">Acceso Personal</a>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="seccion-hero">
+            <h1>Atención Veterinaria Integral</h1>
+            <p>De la Clínica al Campo. Cuidamos la salud de tus mascotas y optimizamos la producción de tu ganado.</p>
+            
+            <a href="https://wa.me/593999999999?text=Hola,%20me%20gustaría%20agendar%20una%20visita." 
+               class="boton-whatsapp" target="_blank" rel="noopener noreferrer">
+               Agendar Cita por WhatsApp
+            </a>
+        </section>
+
+        <section id="servicios" class="seccion-servicios">
+            <h2>Nuestros Servicios</h2>
+            
+            <div class="contenedor-tarjetas">
+                <article class="tarjeta">
+                    <h3>Clínica Doméstica</h3>
+                    <p>Consultas generales, servicio de peluquería, esquemas de vacunación y desparasitación para el bienestar de tus mascotas en casa.</p>
+                </article>
+
+                <article class="tarjeta">
+                    <h3>Producción y Ganadería</h3>
+                    <p>Atención especializada en terreno para bovinos, porcinos y ovinos. Disponibilidad de movilización a tu sector o comunidad.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contacto" class="pie-pagina">
+        <div class="info-contacto">
+            <h3>Vet Murphy</h3>
+            <p>📍 Dirección de la clínica física</p>
+            <p>📞 Teléfono: +593 999 999 999</p>
+            <p>🕒 Horarios: Lunes a Viernes 08:00 - 18:00</p>
+        </div>
+        
+        <div class="mapa-ubicacion">
+            <p>[ Maps ]</p>
+        </div>
+    </footer>
+
+</body>
+</html>

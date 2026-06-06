@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Nuevo Cliente - Vet Murphy</title>
+    <link rel="stylesheet" th:href="@{/estilos.css}">
+</head>
+<body>
+
+    <main class="contenedor-admin">
+        
+        <div class="tarjeta form-registro-interno">
+            <header class="cabecera-formulario">
+                <h2>Registrar Nuevo Dueño / Cliente</h2>
+                <p>Crea las credenciales de acceso para el propietario de la mascota o ganado.</p>
+            </header>
+
+            <form th:action="@{/guardar-cliente}" method="POST" class="formulario-interno">
+                
+                <div class="grupo-input">
+                    <label>Nombre Completo del Propietario:</label>
+                    <input type="text" name="username" required placeholder="Ej. Juan Pérez">
+                </div>
+
+                <div class="grupo-input">
+                    <label>Correo Electrónico:</label>
+                    <input type="email" name="correo" required placeholder="juan.perez@correo.com">
+                </div>
+
+                <div class="grupo-input">
+                    <label>Contraseña Temporal:</label>
+                    <input type="password" name="password" required placeholder="Asigna una clave inicial">
+                    <small class="ayuda-texto">El cliente podrá usar esta contraseña para ingresar a su portal.</small>
+                </div>
+
+                <div class="acciones-formulario">
+                    <a th:href="@{/dashboard-vet}" class="boton-secundario">Cancelar</a>
+                    <button type="submit" class="boton-principal">Registrar Propietario</button>
+                </div>
+
+            </form>
+        </div>
+
+    </main>
+
+</body>
+</html>

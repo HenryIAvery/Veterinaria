@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario</title>
+    <link rel="stylesheet" th:href="@{estilosInventario.css}">
+</head>
+<body>
+    <header class="encabezado-inventario">
+        <div class="logo">Vet Murphy - Gestión de Inventario</div>
+        <nav>
+            <a href="/" class="boton-volver">Volver al Inicio</a>
+            <a href="/logout" class="boton-salir">Cerrar Sesión</a>
+        </nav>
+    </header>
+
+    <main class="contenedor-inventario">
+        <section class="acciones-inventario">
+            <h1>Control de Stock</h1>
+            <button class="boton-agregar" onclick="location.href='/inventario/nuevo'">+ Agregar Producto</button>
+        </section>
+
+        <section class="tabla-productos">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Producto</th>
+                        <th>Categoría</th>
+                        <th>Stock</th>
+                        <th>Precio</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="producto : ${productos}">
+                        <td th:text="${producto.id}">1</td>
+                        <td th:text="${producto.nombre}">Vacuna Parvovirus</td>
+                        <td th:text="${producto.categoria}">Clínica</td>
+                        <td th:text="${producto.stock}" th:classappend="${producto.stock < 5} ? 'stock-bajo' : ''">10</td>
+                        <td th:text="${'$' + producto.precio}">$15.00</td>
+                        <td>
+                            <a th:href="@{/inventario/editar/{id}(id=${producto.id})}" class="btn-editar">Editar</a>
+                            <form th:action="@{/inventario/eliminar/{id}(id=${producto.id})}" method="post" style="display:inline;">
+                                <button type="submit" class="btn-eliminar" onclick="return confirm('¿Está seguro?')">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer class="pie-inventario">
+        <p>&copy; 2023 Vet Murphy - Sistema de Administración Interna</p>
+    </footer>
+
+</body>
+</html>

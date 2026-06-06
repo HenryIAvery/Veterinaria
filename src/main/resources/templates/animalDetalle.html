@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial Clínico - Vet Murphy</title>
+    <link rel="stylesheet" th:href="@{/estilosAdmin.css}">
+</head>
+<body class="cuerpo-admin">
+
+    <aside class="menu-lateral">
+        <div class="logo-admin">
+            <h2>Vet Murphy</h2>
+            <p>Panel Veterinario</p>
+        </div>
+        <nav class="navegacion-admin">
+            <a href="/dashboard">Inicio (Dashboard)</a>
+            <a href="/consultas">Consultas Médicas</a>
+            <a href="/animales" class="activo">Pacientes (Clínica/Campo)</a>
+            <a href="/duenos">Dueños / Clientes</a>
+            <a href="/inventario">Inventario</a>
+        </nav>
+    </aside>
+
+    <main class="contenido-principal">
+        <header class="cabecera-dashboard" style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <h1>Ficha Clínica de Paciente</h1>
+                <p>Expediente médico confidencial e historial de tratamientos</p>
+            </div>
+            <button class="btn-secundario" onclick="window.history.back();">← Volver Atrás</button>
+        </header>
+
+        <section class="tarjeta-perfil-cliente" style="border-top-color: var(--color-secundario);">
+            <div class="avatar-cliente" style="background-color: #E3F2FD; color: var(--color-secundario);">🩺</div>
+            <div class="datos-cliente">
+                <h2>TAG-098 <span style="font-size: 1rem; color: #666; font-weight: normal;">(Bovino)</span></h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem; margin-top: 0.5rem;">
+                    <p><strong>Raza:</strong> Brahman</p>
+                    <p><strong>Sexo:</strong> Macho</p>
+                    <p><strong>Propietario:</strong> María Gómez</p>
+                    <p><strong>Peso Actual:</strong> 450.5 Kg</p>
+                </div>
+            </div>
+            
+            <div class="datos-especificos-tipo" style="background-color: #F8F9FA; padding: 1rem; border-radius: 5px; border-left: 3px solid #FF9800;">
+                <p style="font-size: 0.85rem; text-transform: uppercase; color: #777; font-weight: bold; margin-bottom: 0.2rem;">Datos de Producción</p>
+                <p><strong>Propósito:</strong> Carne</p>
+                </div>
+        </section>
+
+        <div style="margin-top: 1.5rem; display: flex; justify-content: flex-end;">
+            <button class="btn-primario" onclick="location.href='/consultas/nueva'">+ Registrar Nueva Atención</button>
+        </div>
+
+        <h2 style="font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem; color: var(--texto-oscuro);">Línea de Tiempo Médica</h2>
+        
+        <section class="linea-tiempo-consultas">
+            <article class="tarjeta-consulta-historial">
+                <div class="fecha-consulta-item">
+                    <span class="dia">04</span>
+                    <span class="mes">Jun 2026</span>
+                </div>
+                <div class="detalles-consulta-item">
+                    <h3>Diagnóstico: Neumonía Leve</h3>
+                    <p class="doctor-atiende">Atendido por: Dr. Murphy</p>
+                    <p class="observaciones-texto">El animal presentaba fiebre alta y dificultad respiratoria en la visita a la finca. Se procedió a estabilizar.</p>
+                    
+                    <div class="insumos-tratamiento">
+                        <strong>Medicamentos Aplicados:</strong>
+                        <span class="tag-insumo">1x Antibiótico Bovino 50ml</span>
+                        <span class="tag-insumo">1x Jeringa Desechable 20ml</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="tarjeta-consulta-historial">
+                <div class="fecha-consulta-item">
+                    <span class="dia">12</span>
+                    <span class="mes">May 2026</span>
+                </div>
+                <div class="detalles-consulta-item">
+                    <h3>Diagnóstico: Control de Pesaje y Vacunación</h3>
+                    <p class="doctor-atiende">Atendido por: Dr. Murphy</p>
+                    <p class="observaciones-texto">Chequeo de rutina en campo. El animal progresa de forma excelente en su curva de crecimiento de peso.</p>
+                    
+                    <div class="insumos-tratamiento">
+                        <strong>Medicamentos Aplicados:</strong>
+                        <span class="tag-insumo">1x Vacuna Fiebre Aftosa</span>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </main>
+
+</body>
+</html>

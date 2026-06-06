@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Vet Murphy</title>
+    <link rel="stylesheet" th:href="@{/estilosAdmin.css}">
+</head>
+<body class="cuerpo-admin">
+
+    <!-- Menú Lateral (A futuro será un fragmento: th:replace="fragmentos/sidebar :: sidebar") -->
+    <aside class="menu-lateral">
+        <div class="logo-admin">
+            <h2>Vet Murphy</h2>
+            <p>Panel Veterinario</p>
+        </div>
+        <nav class="navegacion-admin">
+            <a href="/dashboard" class="activo">Inicio (Dashboard)</a>
+            <a href="/consultas">Consultas Médicas</a>
+            <a href="/animales">Pacientes (Clínica/Campo)</a>
+            <a th:href="@{/duenios}">Dueños / Clientes</a>
+            <a href="/inventario">Inventario</a>
+            <a th:href="@{/}" class="enlace-salir">
+                <span class="icono">←</span> Volver a la Web
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Contenido Principal -->
+    <main class="contenido-principal">
+        <header class="cabecera-dashboard">
+            <h1>Bienvenido, Dr. Murphy</h1>
+            <p>Resumen de tu jornada para hoy</p>
+        </header>
+
+        <!-- Tarjetas de Resumen Rápido -->
+        <section class="tarjetas-resumen">
+            <article class="tarjeta-info">
+                <h3>Consultas Hoy</h3>
+                <p class="numero-grande" th:text="${consultasHoy}">5</p>
+            </article>
+            <article class="tarjeta-info">
+                <h3>Salidas a Campo</h3>
+                <p class="numero-grande" th:text="${salidasCampo}">2</p>
+            </article>
+            <article class="tarjeta-info alerta">
+                <h3>Stock Crítico</h3>
+                <p class="numero-grande" th:text="${productosStockBajo}">3</p>
+            </article>
+        </section>
+
+        <!-- Botones de Acción Rápida -->
+        <section class="acciones-rapidas">
+            <button class="btn-primario" onclick="location.href='/consultas/nueva'">+ Nueva Consulta</button>
+            <button class="btn-secundario" onclick="location.href='/animales/nuevo'">+ Registrar Paciente</button>
+            <button class="btn-secundario" onclick="location.href='/registrar-cliente'">+ Nuevo Cliente</button>
+        </section>
+
+        <!-- Dos Columnas: Agenda y Alertas -->
+        <section class="paneles-inferiores">
+            <!-- Columna Izquierda: Agenda -->
+            <div class="panel-agenda">
+                <h2>Agenda del Día</h2>
+                <ul class="lista-agenda">
+                    <!-- Ejemplo estático de cómo se verá Thymeleaf iterando -->
+                    <li class="item-agenda">
+                        <strong>09:00 AM</strong> - Vacunación Lote Ganado (Finca Los Pinos)
+                    </li>
+                    <li class="item-agenda">
+                        <strong>11:30 AM</strong> - Chequeo Canino (Luna - Clínica)
+                    </li>
+                    <li class="item-agenda">
+                        <strong>02:00 PM</strong> - Revisión Porcina (Comunidad El Rosal)
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Columna Derecha: Alertas de Inventario -->
+            <div class="panel-alertas">
+                <h2>Alertas de Inventario</h2>
+                <table class="tabla-alertas">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Stock</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Ejemplo simulado con Thymeleaf -->
+                        <tr>
+                            <td>Vacuna Rabia</td>
+                            <td class="texto-rojo">2 dosis</td>
+                        </tr>
+                        <tr>
+                            <td>Jeringas 5ml</td>
+                            <td class="texto-rojo">5 un.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>

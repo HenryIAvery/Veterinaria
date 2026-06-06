@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil del Cliente - Vet Murphy</title>
+    <link rel="stylesheet" th:href="@{/estilosAdmin.css}">
+</head>
+<body class="cuerpo-admin">
+
+    <aside class="menu-lateral">
+        <div class="logo-admin">
+            <h2>Vet Murphy</h2>
+            <p>Panel Veterinario</p>
+        </div>
+        <nav class="navegacion-admin">
+            <a href="/dashboard">Inicio (Dashboard)</a>
+            <a href="/consultas">Consultas Médicas</a>
+            <a href="/animales">Pacientes (Clínica/Campo)</a>
+            <a href="/duenos" class="activo">Dueños / Clientes</a>
+            <a href="/inventario">Inventario</a>
+        </nav>
+    </aside>
+
+    <main class="contenido-principal">
+        <header class="cabecera-dashboard" style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <h1>Ficha del Cliente</h1>
+                <p>Historial y control de animales asociados al propietario</p>
+            </div>
+            <button class="btn-secundario" onclick="window.history.back();">← Volver al Directorio</button>
+        </header>
+
+        <section class="tarjeta-perfil-cliente">
+            <div class="avatar-cliente">M</div>
+            <div class="datos-cliente">
+                <h2 th:text="${nombreDueno}">María Gómez</h2>
+                <p><strong>Teléfono:</strong> <span th:text="${telefonoDueno}">+506 7777-7777</span></p>
+                <p><strong>Ubicación/Comunidad:</strong> <span th:text="${comunidadDueno}">Finca Los Pinos (Sector Campo)</span></p>
+            </div>
+            <div class="acciones-perfil">
+                <button class="btn-primario" style="background-color: var(--color-secundario);" onclick="alert('Modo visual: Editar datos del dueño.');">Editar Datos</button>
+            </div>
+        </section>
+
+        <header class="sub-cabecera" style="margin-top: 2rem; margin-bottom: 1rem;">
+            <h2>Animales Bajo su Propiedad</h2>
+            <p>Lista de mascotas o ganado registrados por este cliente</p>
+        </header>
+
+        <section class="panel-tabla">
+            <table class="tabla-admin">
+                <thead>
+                    <tr>
+                        <th>ID Interno</th>
+                        <th>Nombre / Arete (Tag)</th>
+                        <th>Especie</th>
+                        <th>Raza</th>
+                        <th>Sexo</th>
+                        <th>Detalle Clínico</th>
+                        <th>Acción Médica</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#1024</td>
+                        <td><strong>TAG-098</strong></td>
+                        <td><span class="badge-animal bovino">Bovino</span></td>
+                        <td>Brahman</td>
+                        <td>Macho</td>
+                        <td>Producción de Carne / Peso: 450 Kg</td>
+                        <td>
+                            <button class="btn-accion" onclick="location.href='/animalDetalle'">Ver Historial Médico</button>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>#1025</td>
+                        <td><strong>Rayo</strong></td>
+                        <td><span class="badge-animal equino">Equino</span></td>
+                        <td>Criollo</td>
+                        <td>Macho</td>
+                        <td>Caballo de Trabajo / Peso: 380 Kg</td>
+                        <td>
+                            <button class="btn-accion" onclick="location.href='/animalDetalle'">Ver Historial Médico</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+</body>
+</html>

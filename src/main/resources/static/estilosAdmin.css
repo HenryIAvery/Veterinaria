@@ -1,0 +1,566 @@
+:root {
+    --color-primario: #2E7D32; /* Verde veterinario */
+    --color-secundario: #1565C0; /* Azul médico */
+    --color-fondo: #F4F6F8;
+    --color-sidebar: #1E293B;
+    --color-blanco: #FFFFFF;
+    --color-alerta: #D32F2F;
+    --texto-oscuro: #333333;
+    --texto-claro: #F8F9FA;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.cuerpo-admin {
+    display: flex;
+    min-height: 100vh;
+    background-color: var(--color-fondo);
+}
+
+/* --- Menú Lateral (Sidebar) --- */
+.menu-lateral {
+    width: 250px;
+    background-color: var(--color-sidebar);
+    color: var(--color-blanco);
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-admin {
+    padding: 2rem 1.5rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.logo-admin h2 {
+    color: #81C784; /* Verde suave */
+}
+
+.navegacion-admin {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+
+.navegacion-admin a {
+    color: var(--texto-claro);
+    text-decoration: none;
+    padding: 1rem 1.5rem;
+    transition: background 0.3s;
+}
+
+.navegacion-admin a:hover, .navegacion-admin a.activo {
+    background-color: var(--color-primario);
+    border-left: 4px solid #A5D6A7;
+}
+
+/* --- Contenido Principal --- */
+.contenido-principal {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+.cabecera-dashboard {
+    margin-bottom: 2rem;
+    color: var(--texto-oscuro);
+}
+
+/* --- Tarjetas Superiores --- */
+.tarjetas-resumen {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.tarjeta-info {
+    flex: 1;
+    min-width: 200px;
+    background-color: var(--color-blanco);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    border-left: 5px solid var(--color-secundario);
+}
+
+.tarjeta-info.alerta {
+    border-left-color: var(--color-alerta);
+}
+
+.numero-grande {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--texto-oscuro);
+    margin-top: 0.5rem;
+}
+
+/* --- Acciones Rápidas --- */
+.acciones-rapidas {
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-primario, .btn-secundario {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: transform 0.2s;
+}
+
+.btn-primario {
+    background-color: var(--color-primario);
+    color: var(--color-blanco);
+}
+
+.btn-secundario {
+    background-color: var(--color-blanco);
+    color: var(--color-primario);
+    border: 1px solid var(--color-primario);
+}
+
+.btn-primario:hover, .btn-secundario:hover {
+    transform: translateY(-2px);
+}
+
+/* --- Paneles Inferiores (Grid/Flex) --- */
+.paneles-inferiores {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.panel-agenda, .panel-alertas {
+    flex: 1;
+    min-width: 300px;
+    background-color: var(--color-blanco);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.panel-agenda h2, .panel-alertas h2 {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    border-bottom: 2px solid var(--color-fondo);
+    padding-bottom: 0.5rem;
+}
+
+.lista-agenda {
+    list-style: none;
+}
+
+.item-agenda {
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #EEEEEE;
+}
+
+.tabla-alertas {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla-alertas th, .tabla-alertas td {
+    padding: 0.8rem;
+    text-align: left;
+    border-bottom: 1px solid #EEEEEE;
+}
+
+.texto-rojo {
+    color: var(--color-alerta);
+    font-weight: bold;
+}
+/* =========================================
+   ESTILOS PARA FORMULARIOS ADMINISTRATIVOS
+   ========================================= */
+
+.panel-formulario {
+    background-color: var(--color-blanco);
+    padding: 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    max-width: 900px; /* Evita que el formulario sea inmensamente ancho en monitores grandes */
+}
+
+.titulo-seccion-form {
+    color: var(--color-secundario);
+    font-size: 1.1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #EEEEEE;
+}
+
+/* Primera sección sin margen superior */
+.formulario-estilizado .titulo-seccion-form:first-of-type {
+    margin-top: 0;
+}
+
+.fila-inputs {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.2rem;
+}
+
+.grupo-input {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.grupo-input label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--texto-oscuro);
+    margin-bottom: 0.4rem;
+}
+
+.grupo-input input,
+.grupo-input select {
+    padding: 0.7rem;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #FAFAFA;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Efecto al hacer clic en un input (Focus) */
+.grupo-input input:focus,
+.grupo-input select:focus {
+    outline: none;
+    border-color: var(--color-primario);
+    box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15); /* Brillo verde suave */
+    background-color: var(--color-blanco);
+}
+
+.acciones-formulario {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #EEEEEE;
+}
+/* =========================================
+   AÑADIDOS PARA EL FORMULARIO DE CONSULTAS
+   ========================================= */
+
+/* Estilos para la caja grande de Observaciones */
+.grupo-input textarea {
+    padding: 0.7rem;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #FAFAFA;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    resize: vertical; /* Deja que el doctor haga la caja más grande solo hacia abajo */
+    font-family: inherit;
+}
+
+.grupo-input textarea:focus {
+    outline: none;
+    border-color: var(--color-primario);
+    box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15);
+    background-color: var(--color-blanco);
+}
+
+/* Caja especial resaltada para descontar el inventario */
+.fila-insumos {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    align-items: flex-end; /* Alinea los cuadros abajo, respetando los títulos */
+    background-color: #F8F9FA;
+    padding: 1.5rem;
+    border-radius: 5px;
+    border-left: 4px solid var(--color-secundario);
+}
+
+.navegacion-admin .enlace-salir {
+    margin-top: auto; /* Empuja el botón automáticamente hacia el fondo del menú */
+    background-color: rgba(211, 47, 47, 0.1); /* Un fondo rojo muy sutil */
+    color: #FFCDD2; /* Texto claro rojizo */
+    border-left: 4px solid var(--color-alerta);
+    font-weight: 500;
+}
+
+.navegacion-admin .enlace-salir:hover {
+    background-color: var(--color-alerta); /* Se vuelve rojo sólido al pasar el mouse */
+    color: var(--color-blanco);
+    border-left-color: #FFCDD2;
+    flex: 1;
+}
+
+/* =========================================
+   ESTILOS PARA TABLA DE DUEÑOS Y ANIMALES
+   ========================================= */
+
+.barra-herramientas {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.buscador-interno {
+    flex: 1;
+    max-width: 400px;
+    padding: 0.7rem 1rem;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.panel-tabla {
+    background-color: var(--color-blanco);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    overflow-x: auto; /* Permite scroll horizontal si la pantalla es muy pequeña */
+}
+
+.tabla-admin {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.tabla-admin th, .tabla-admin td {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #EEEEEE;
+    font-size: 0.95rem;
+}
+
+.tabla-admin th {
+    background-color: #F8F9FA;
+    color: var(--texto-oscuro);
+    font-weight: 600;
+}
+
+/* Contenedor de los animales en la tabla */
+.lista-badges-animales {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap; /* Si son muchos animales, se acomodan abajo automáticamente */
+}
+
+/* Estilo general de las etiquetas de animales (Badges) */
+.badge-animal {
+    padding: 0.3rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* Colores personalizados por tipo de animal para control visual rápido */
+.badge-animal.canino { background-color: #E3F2FD; color: #0D47A1; } /* Azul */
+.badge-animal.felino { background-color: #F3E5F5; color: #4A148C; } /* Morado */
+.badge-animal.bovino { background-color: #E8F5E9; color: #1B5E20; } /* Verde Ganado */
+.badge-animal.equino { background-color: #FFF3E0; color: #E65100; } /* Naranja */
+
+/* Botones pequeños de acción en la tabla */
+.btn-accion {
+    padding: 0.4rem 0.8rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: bold;
+    background-color: var(--color-secundario);
+    color: var(--color-blanco);
+    transition: opacity 0.2s;
+}
+
+.btn-accion:hover {
+    opacity: 0.9;
+}
+
+/* =========================================
+   ESTILOS PARA PERFIL DE DUEÑO (DETALLE)
+   ========================================= */
+
+.tarjeta-perfil-cliente {
+    background-color: var(--color-blanco);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    border-top: 4px solid var(--color-primario); /* Línea verde decorativa arriba */
+}
+
+.avatar-cliente {
+    width: 80px;
+    height: 80px;
+    background-color: #E8F5E9;
+    color: var(--color-primario);
+    font-size: 2.5rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.datos-cliente {
+    flex: 1;
+}
+
+.datos-cliente h2 {
+    color: var(--texto-oscuro);
+    margin-bottom: 0.5rem;
+}
+
+.datos-cliente p {
+    font-size: 0.95rem;
+    color: #555555;
+    margin-bottom: 0.3rem;
+}
+
+.acciones-perfil {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+
+/* =========================================
+   ESTILOS PARA LA HISTORIA CLÍNICA (NIVEL 3)
+   ========================================= */
+
+.linea-tiempo-consultas {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.tarjeta-consulta-historial {
+    background-color: var(--color-blanco);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    display: flex;
+    overflow: hidden;
+}
+
+/* El bloque izquierdo con la fecha resaltada */
+.fecha-consulta-item {
+    background-color: var(--color-sidebar);
+    color: var(--color-blanco);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 110px;
+    text-align: center;
+}
+
+.fecha-consulta-item .dia {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #81C784;
+}
+
+.fecha-consulta-item .mes {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+/* El bloque derecho con el contenido médico */
+.detalles-consulta-item {
+    padding: 1.5rem;
+    flex: 1;
+}
+
+.detalles-consulta-item h3 {
+    color: var(--texto-oscuro);
+    margin-bottom: 0.3rem;
+}
+
+.doctor-atiende {
+    font-size: 0.85rem;
+    color: var(--color-secundario);
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+}
+
+.observaciones-texto {
+    color: #555555;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+/* Las etiquetas de medicamentos usados */
+.insumos-tratamiento {
+    font-size: 0.9rem;
+    border-top: 1px dashed #EEEEEE;
+    padding-top: 0.8rem;
+}
+
+.tag-insumo {
+    display: inline-block;
+    background-color: #F1F5F9;
+    color: #475569;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-left: 0.5rem;
+    border: 1px solid #E2E8F0;
+}
+
+/* Responsivo para celulares */
+
+
+@media (max-width: 768px) {
+    .cuerpo-admin {
+        flex-direction: column;
+    }
+    .menu-lateral {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 1rem;
+    }
+    .navegacion-admin {
+        flex-direction: row;
+        margin-top: 0;
+    }
+    .navegacion-admin a {
+        padding: 1rem;
+    }
+    
+    .fila-inputs {
+        flex-direction: column;
+        gap: 1.2rem;
+    }
+
+    .fila-insumos {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .tarjeta-consulta-historial {
+        flex-direction: column;
+    }
+    .fecha-consulta-item {
+        flex-direction: row;
+        gap: 0.5rem;
+        padding: 0.8rem;
+        min-width: auto;
+    }
+
+}

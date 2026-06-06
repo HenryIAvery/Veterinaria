@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directorio de Pacientes - Vet Murphy</title>
+    <link rel="stylesheet" th:href="@{/estilosAdmin.css}">
+</head>
+<body class="cuerpo-admin">
+
+    <aside class="menu-lateral">
+        <div class="logo-admin">
+            <h2>Vet Murphy</h2>
+            <p>Panel Veterinario</p>
+        </div>
+        <nav class="navegacion-admin">
+            <a href="/dashboard">Inicio (Dashboard)</a>
+            <a href="/consultas">Consultas Médicas</a>
+            <a href="/animales" class="activo">Pacientes (Clínica/Campo)</a>
+            <a href="/duenios">Dueños / Clientes</a>
+            <a href="/inventario">Inventario</a>
+        </nav>
+    </aside>
+
+    <main class="contenido-principal">
+        <header class="cabecera-dashboard">
+            <h1>Directorio Global de Pacientes</h1>
+            <p>Búsqueda médica, filtrado por especies y acceso a historiales clínicos</p>
+        </header>
+
+        <section class="barra-herramientas" style="background-color: var(--color-blanco); padding: 1.2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+            <input type="text" placeholder="Buscar por Nombre, Arete (TAG) o Apellido del dueño..." class="buscador-interno" style="max-width: 350px;">
+            
+            <div class="filtros-especie" style="display: flex; gap: 0.5rem; align-items: center;">
+                <span style="font-size: 0.9rem; font-weight: 600; color: #666;">Filtrar:</span>
+                <select class="buscador-interno" style="padding: 0.5rem; width: 150px;">
+                    <option value="todos">Todos</option>
+                    <option value="bovino">Bovinos</option>
+                    <option value="canino">Caninos</option>
+                    <option value="felino">Felinos</option>
+                    <option value="equino">Equinos</option>
+                </select>
+            </div>
+
+            <button class="btn-primario" onclick="location.href='/animales/nuevo'">+ Registrar Paciente</button>
+        </section>
+
+        <section class="panel-tabla" style="margin-top: 1.5rem;">
+            <table class="tabla-admin">
+                <thead>
+                    <tr>
+                        <th>Identificador / Nombre</th>
+                        <th>Especie</th>
+                        <th>Raza / Tipo</th>
+                        <th>Propietario (Humano)</th>
+                        <th>Comunidad / Dirección</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Luna</strong> <span style="color: #888; font-size: 0.85rem;">(Pérez)</span></td>
+                        <td><span class="badge-animal canino">Canino</span></td>
+                        <td>Poodle</td>
+                        <td>Juan Pérez</td>
+                        <td>Comunidad El Rosal</td>
+                        <td>
+                            <button class="btn-accion" onclick="location.href='/animalDetalle'">Historial Médico</button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>TAG-098</strong></td>
+                        <td><span class="badge-animal bovino">Bovino</span></td>
+                        <td>Brahman (Carne)</td>
+                        <td>María Gómez</td>
+                        <td>Finca Los Pinos</td>
+                        <td>
+                            <button class="btn-accion" onclick="location.href='/animalDetalle'">Historial Médico</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+</body>
+</html>

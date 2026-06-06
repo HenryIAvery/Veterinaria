@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes y Propietarios - Vet Murphy</title>
+    <link rel="stylesheet" th:href="@{/estilosAdmin.css}">
+</head>
+<body class="cuerpo-admin">
+
+    <aside class="menu-lateral">
+        <div class="logo-admin">
+            <h2>Vet Murphy</h2>
+            <p>Panel Veterinario</p>
+        </div>
+        <nav class="navegacion-admin">
+            <a href="/dashboard">Inicio (Dashboard)</a>
+            <a href="/consultas">Consultas Médicas</a>
+            <a href="/animales">Pacientes (Clínica/Campo)</a>
+            <a href="/duenios" class="activo">Dueños / Clientes</a>
+            <a href="/inventario">Inventario</a>
+        </nav>
+    </aside>
+
+    <main class="contenido-principal">
+        <header class="cabecera-dashboard">
+            <h1>Directorio de Clientes</h1>
+            <p>Gestión de propietarios y control de animales asociados</p>
+        </header>
+
+        <section class="barra-herramientas">
+            <input type="text" placeholder="Buscar dueño por nombre o comunidad..." class="buscador-interno">
+            <a th:href="@{/registrar-cliente}" class="boton-agregar-nuevo">Nuevo Propietario</a>
+        </section>
+
+        <section class="panel-tabla">
+            <table class="tabla-admin">
+                <thead>
+                    <tr>
+                        <th>Nombre del Propietario</th>
+                        <th>Contacto / Teléfono</th>
+                        <th>Ubicación / Comunidad</th>
+                        <th>Animales Registrados</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Juan Pérez</strong></td>
+                        <td>+506 8888-8888</td>
+                        <td>Comunidad El Rosal</td>
+                        <td>
+                            <div class="lista-badges-animales">
+                                <span class="badge-animal canino">Luna (Perro)</span>
+                                <span class="badge-animal felino">Tom (Gato)</span>
+                            </div>
+                        </td>
+                        <td>
+                            <button class="btn-accion editar" onclick="location.href='/duenioDetalle'">Ver Ficha</button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>María Gómez</strong></td>
+                        <td>+506 7777-7777</td>
+                        <td>Finca Los Pinos (Sector Campo)</td>
+                        <td>
+                            <div class="lista-badges-animales">
+                                <span class="badge-animal bovino">TAG-098 (Toro)</span>
+                                <span class="badge-animal bovino">TAG-099 (Vaca)</span>
+                                <span class="badge-animal equino">Rayo (Caballo)</span>
+                            </div>
+                        </td>
+                        <td>
+                            <button class="btn-accion editar" onclick="location.href='/duenioDetalle'">Ver Ficha</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+</body>
+</html>
